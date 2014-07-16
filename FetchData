@@ -1,0 +1,14 @@
+ParsedNotificationDataSet result = new ParsedNotificationDataSet();
+    Cursor c = db.rawQuery("select * from notificationtable", null);
+    if (c.getCount() > 0) {
+        c.moveToFirst();
+        do {
+            result.setclassurl(c.getString(c.getColumnIndex("Id")));
+            result.settype(c.getString(c.getColumnIndex("type")));
+            result.setschool(c.getString(c.getColumnIndex("school")));
+            result.setdescription(c.getString(c.getColumnIndex("description")));
+            result.settitle(c.getString(c.getColumnIndex("title")));
+            result.setdatePosted(c.getString(c.getColumnIndex("datePosted")));
+            results.add(result);
+        } while (c.moveToNext());
+    }
